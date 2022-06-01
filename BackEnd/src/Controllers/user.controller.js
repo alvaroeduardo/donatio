@@ -48,7 +48,7 @@ module.exports = {
         connection.query(
             "SELECT * FROM usuarios WHERE cpf = (?) AND pass = md5(?)",
 
-            [req.body.email, req.body.pass],
+            [req.body.cpf, req.body.pass],
 
             (error, results) => {
                 if(error) return res.status(500).json({error: error});
