@@ -4,7 +4,7 @@ const connection = require('../db.config');
 module.exports = {
     index(req, res){
         connection.query(
-            "SELECT * FROM doacoes WHERE id = (?)",
+            'SELECT * FROM  produtos WHERE id = (?)',
 
             [req.query.id],
 
@@ -16,23 +16,21 @@ module.exports = {
         );
     },
 
-    allDonates(req, res){
-        connection.query(
-            "SELECT * FROM doacoes",
+    allProducts(req, res){
+        'SELECT * FROM posicao',
 
-            (error, results) => {
-                if(error) return res.status(500).json({error: error});
-
-                return res.status(200).json(results);
-            }
-        );
+        (error, results) => {
+            if(error) return res.status(500).json({error: error});
+            
+            return res.status(200).json(results);
+        }
     },
 
-    insertDonate(req, res){
+    insertProducts(req, res){
         connection.query(
-            "INSERT INTO doacoes (titulo, end_retirada, produtos_id, id_user) VALUES (?, ?, ?, ?)",
+            'INSERT INTO produtos(titulo, tipo_id) VALUES (?, ?)',
 
-            [req.body.titulo, req.body.end, req.body.prod, req.body.userId],
+            [req.body.titulo, req.body.tipo],
 
             (error, results) => {
                 if(error) return res.status(500).json({error: error});
@@ -42,17 +40,17 @@ module.exports = {
         );
     },
 
-    updateDonate(req, res){
+    updateProduct(req, res){
         connection.query(
-            "UPDATE doacoes SET titulo = (?), end_retirada = (?), produtos_id = (?)",
+            "UPDATE produtos SET titulo = (?), tipo_id = (?)",
 
-            [req.body.titulo, req.body.end, req.body.prod],
+            [req.body.titulo, req.body.tipo],
 
             (error, results) => {
                 if(error) return res.status(500).json({error: error});
 
                 if(results.affectedRows == 0){
-                    return res.status(404).json({Status: "Doação não encontrada. Nenhuma alteração foi realizada."});
+                    return res.status(404).json({Status: "Produto não encontrado. Nenhuma alteração foi realizada."});
                 }
 
                 return res.status(200).json({Status: "Alteração realizada com sucesso.", Results: results});
@@ -60,9 +58,9 @@ module.exports = {
         );
     },
 
-    deleteDonate(req, res){
+    deleteProducts(req, res){
         connection.query(
-            "DELETE FROM doacoes WHERE id = (?)",
+            'DELETE FROM produtos WHERE id = (?)',
 
             [req.query.id],
 
@@ -70,10 +68,10 @@ module.exports = {
                 if(error) return res.status(500).json({error: error});
 
                 if(results.affectedRows == 0){
-                    return res.status(404).json({Status: "Doação não encontrada. Nenhuma doação foi deletada."});
+                    return res.status(404).json({Status: "Produto não encontrado. Nenhum produto foi deletado."});
                 }
 
-                return res.status(200).json({Status: "Doação deletada com sucesso.", Results: results});
+                return res.status(200).json({Status: "Produto deletado com sucesso.", Results: results});
             }
         );
     }
