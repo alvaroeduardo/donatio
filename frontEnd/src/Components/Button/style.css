@@ -1,0 +1,95 @@
+.buttonTitle{
+    font-size: 16px;
+}
+
+.primaryStyle{
+    padding: 1rem 2rem;
+    width: auto;
+    height: auto;
+    border: 2px solid #6665EE;
+    border-radius: .5rem;
+    background-color: #7877F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: .1s;
+}
+
+.primaryStyle:hover{
+    padding: 1rem 2rem;
+    width: auto;
+    height: auto;
+    border: 2px solid #7877F0;
+    border-radius: .5rem;
+    background-color: #7877F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.primaryStyle:active{
+    padding: 1rem 2rem;
+    width: auto;
+    height: auto;
+    border: 2px solid #5352ED;
+    border-radius: .5rem;
+    background-color: #5352ED;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.secondaryStyle{
+    padding: 1rem 2rem;
+    width: auto;
+    max-width: 8rem;
+    height: auto;
+    border-radius: .5rem;
+    background-color: #C2C2F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5352ED;   
+}
+
+.secondaryStyle:hover{
+    padding: 1rem 2rem;
+    width: auto;
+    height: auto;
+    border-radius: .5rem;
+    background-color: #9D9DF2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5352ED;   
+    transition: .1s;
+}
+
+.secondaryStyle:active{
+    padding: 1rem 2rem;
+    width: auto;
+    height: auto;
+    border-radius: .5rem;
+    background-color: #B0AFF4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5352ED;   
+    transition: .1s;
+}
+
+.whiteStyle{
+    padding: 1rem 2rem;
+    width: auto;
+    height: auto;
+    border-radius: .5rem;
+    background: rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;   
+    transition: .1s;
+}
