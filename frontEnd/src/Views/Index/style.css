@@ -13,6 +13,7 @@
     position: absolute;
     top: 3rem;
     right: 3rem;
+    cursor: pointer;
 }
 
 .dataIndexContainer{
@@ -44,4 +45,28 @@
     width: 14rem;
     color: #F5F6FA;
     font-weight: 500;
+}
+
+.loginFormContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginFormContainer > h1.titleLogin{
+    color: #5352ED;
+    font-size: 40px;
+    margin-bottom: 2.5rem;
+}
+
+.loginFormContainer > h2.title{
+    font-size: 24px;
+    color: #50565F;
+    margin-bottom: .5rem;
+}
+
+.loginFormContainer > p.loginDescription{
+    font-size: 12px;
+    color: #50565F;
 }
