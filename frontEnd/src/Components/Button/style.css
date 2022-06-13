@@ -14,6 +14,7 @@
     justify-content: center;
     color: white;
     transition: .1s;
+    cursor: pointer;
 }
 
 .primaryStyle:hover{
@@ -52,7 +53,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #5352ED;   
+    color: #5352ED;
+    cursor: pointer;
 }
 
 .secondaryStyle:hover{
