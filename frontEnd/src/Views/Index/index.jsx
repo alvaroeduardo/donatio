@@ -18,14 +18,22 @@ const customStyles = {
         transform: 'translate(-50%, -50%)',
         padding: '5rem',
         borderRadius: '50px',
-        border: 'none'
+        border: 'none',
+        width: '1000px'
     },
 };
 
 function index() {
     const [stateModal, setStateModal] = useState(false);
+
     const [cpfValue, setCpfValue] = useState('');
     const [pwdValue, setPwdValue] = useState('');
+
+    const [resCpf, setResCpf] = useState('');
+    const [resEmail, setResEmail] = useState('');
+    const [resPwd, setResPwd] = useState('');
+
+    const [registerState, setRegisterState] = useState(false);
 
     const modalFunctions = {
         open(){
@@ -34,15 +42,30 @@ function index() {
 
         close(){
             setStateModal(false);
+            setRegisterState(false)
         }
     }
 
-    function cpfHandleChange(){
-        setCpfValue(event.target.value);
-    }
+    const HandleChange = {
+        cpf(){
+            setCpfValue(event.target.value);
+        },
 
-    function pwdHandleChange(){
-        setPwdValue(event.target.value);
+        pwd(){
+            setPwdValue(event.target.value);
+        },
+
+        resCpf(){
+            setResCpf(event.target.value);
+        },
+
+        resEmail(){
+            setResEmail(event.target.value);
+        },
+
+        resPwd(){
+            setResPwd(event.target.value);
+        }
     }
 
     return (
@@ -69,32 +92,69 @@ function index() {
                 ariaHideApp={false}
 
             >
-                <div className='loginFormContainer'>
-                    <h1 className="titleLogin">Donatio</h1>
-                    <h2 className="title">Login</h2>
-                    <p className="loginDescription">Entre para acessar a página principal</p>
+                {
+                    !registerState ? 
+                        <div className='loginFormContainer'>
+                            <h1 className="titleLogin">Donatio</h1>
+                            <h2 className="title">Login</h2>
+                            <p className="loginDescription">Entre para acessar a página principal</p>
 
-                    <Input 
-                        Label="Insira seu CPF:" 
-                        Description="Somente números. Ex: 11122233344"
-                        Type="text"
-                        Value={cpfValue}
-                        OnChange={cpfHandleChange}
-                    />
+                            <Input 
+                                Label="Insira seu CPF:" 
+                                Description="Somente números. Ex: 11122233344"
+                                Type="text"
+                                Value={cpfValue}
+                                OnChange={HandleChange.cpf}
+                            />
 
-                    <Input 
-                        Label="Insira sua Senha:" 
-                        Description="Insira sua senha."
-                        Type="password"
-                        Value={pwdValue}
-                        OnChange={pwdHandleChange}
-                    />
+                            <Input 
+                                Label="Insira sua Senha:" 
+                                Description="Insira sua senha."
+                                Type="password"
+                                Value={pwdValue}
+                                OnChange={HandleChange.pwd}
+                            />
 
-                    <div className="buttonBoxLogin">
-                        <a href="#">Criar Conta</a>
-                        <Button StyleType="primaryStyle" Title="Entrar"/>
-                    </div>
-                </div>
+                            <div className="buttonBoxLogin">
+                                <a onClick={() => setRegisterState(true)}>Criar Conta</a>
+                                <Button StyleType="primaryStyle" Title="Entrar"/>
+                            </div>
+                        </div> 
+                    : 
+                        <div className='loginFormContainer'>
+                            <h1 className="titleLogin">Donatio</h1>
+                            <h2 className="title">Registrar</h2>
+                            <p className="loginDescription">Crie uma Conta para ter acesso ao sistema.</p>
+
+                            <Input 
+                                Label="Insira seu CPF:" 
+                                Description="Somente números. Ex: 11122233344"
+                                Type="text"
+                                Value={resCpf}
+                                OnChange={HandleChange.resCpf}
+                            />
+
+                            <Input 
+                                Label="Insira seu E-mail:" 
+                                Description="Insira seu e-mail."
+                                Type="email"
+                                Value={resEmail}
+                                OnChange={HandleChange.resEmail}
+                            />
+
+                            <Input 
+                                Label="Insira sua Senha:" 
+                                Description="Insira sua senha."
+                                Type="password"
+                                Value={resPwd}
+                                OnChange={HandleChange.resPwd}
+                            />
+
+                            <div className="buttonBoxLogin">
+                                <Button StyleType="primaryStyle" Title="Criar Conta"/>
+                            </div>
+                        </div> 
+                }
             </Modal>
         </div>
     )

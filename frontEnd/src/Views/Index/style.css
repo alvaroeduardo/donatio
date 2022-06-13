@@ -73,7 +73,7 @@
 }
 
 .buttonBoxLogin{
-    width: 100%;
+    width: 32%;
     display: flex;
     flex-direction: row;
     align-items: center;
