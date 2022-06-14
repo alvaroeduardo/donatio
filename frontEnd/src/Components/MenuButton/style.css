@@ -1,0 +1,29 @@
+.menuButtonContainer{
+    width: 90%;
+    height: auto;
+    padding: 1rem .5rem;
+    background-color: #F5F6FA;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .2s;
+    margin: 0 0 1rem 0;
+}
+
+.menuButtonContainer > h1{
+    font-size: 13px;
+    font-weight: 600;
+    color: #5352ED;
+    margin: 0 0 0 .2rem;
+}
+
+.menuButtonContainer:hover{
+    background-color: white;
+}
+
+.getOut{
+    position: absolute;
+    bottom: 2px;
+}

@@ -150,9 +150,8 @@ function index() {
                                 OnChange={HandleChange.resPwd}
                             />
 
-                            <div className="buttonBoxLogin">
-                                <Button StyleType="primaryStyle" Title="Criar Conta"/>
-                            </div>
+
+                            <Button StyleType="primaryStyle" Title="Criar Conta"/>
                         </div> 
                 }
             </Modal>
