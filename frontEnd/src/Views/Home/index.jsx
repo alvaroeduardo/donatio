@@ -5,8 +5,9 @@ import Menu from '../../Components/Menu';
 
 function Home() {
     return (
-        <div>
+        <div className='homeComponentContainer'>
             <Menu/>
+            
         </div>
     
     );
