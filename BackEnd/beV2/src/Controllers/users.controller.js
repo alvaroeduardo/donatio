@@ -3,12 +3,24 @@ import usersModel from "../Models/users.model.js";
 
 async function listAllUsers(req, res){
     await usersModel.findAll()
-        .then( (result) => res.json(result) )
+        .then( (result) => {
+            if(result == []){
+                res.status(202).json({Result: "Nenhum usuário foi criado."})
+            }
+
+            res.status(202).json(result);
+        } )
 }
 
 async function findUser(req, res){
     await usersModel.findByPk( req.query.id )
-        .then( (result) => res.json(result) )
+        .then( (result) => {
+            if(result == null){
+                res.status(404).json({Result: "Nenhum usuário com esse Id foi encontrado."})
+            }
+
+            res.status(202).json(result);
+        } )
 }
 
 function createNewUser(req, res){
@@ -22,7 +34,9 @@ function createNewUser(req, res){
         isGiver: req.body.isGiver,
         profilePic: req.body.profilePic
     })
-        .then( (result) => res.json(result) )
+        .then( 
+            (result) => res.json({Results: "Usuário criado com sucesso.", result}) 
+        )
 }
 
 async function updateUser(req, res){
@@ -37,14 +51,14 @@ async function updateUser(req, res){
     user.profilePic = req.body.profilePic;
 
     await user.save()
-        .then( (result) => res.json(result) )
+        .then( (result) => res.status(200).json({Results: "Dados atualizados com sucesso.", result}) )
 }
 
 async function deleteUser(req, res){
     const user = await usersModel.findByPk(req.query.id);
 
     user.destroy()
-        .then( (result) => res.json(result) )
+        .then( (result) => res.status(200).json({Results: "Deletado com sucesso."}) )
 } 
 
 export default { listAllUsers, findUser, createNewUser, updateUser, deleteUser }
