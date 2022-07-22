@@ -9,6 +9,7 @@ const connection = require('./src/db.config');
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded());
 app.use(Routes);
 app.use(cors());
 

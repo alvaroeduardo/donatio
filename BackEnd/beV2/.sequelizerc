@@ -1,0 +1,6 @@
+const path = require('path');
+
+module.exports = {
+    'config': path.resolve(__dirname, 'src', 'Config', 'config.json'),
+    'migrations-path': path.resolve(__dirname, 'src', 'Migrations')
+}
