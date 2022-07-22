@@ -1,4 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
+import jwt from 'jsonwebtoken';
+
 import usersModel from "../Models/users.model.js";
 
 async function listAllUsers(req, res){
@@ -59,6 +61,30 @@ async function deleteUser(req, res){
 
     user.destroy()
         .then( (result) => res.status(200).json({Results: "Deletado com sucesso."}) )
-} 
+}
 
-export default { listAllUsers, findUser, createNewUser, updateUser, deleteUser }
+async function login(req, res){
+    await usersModel.findOne({
+        where: {cpf: req.body.cpf, password: req.body.password}
+    })
+        .then(
+            (result) => {
+                if(result == null){
+                    res.status(404).json({Results: "Dados não são congruentes. Login não efetuado."})
+                }
+
+                const token = jwt.sign({
+                        userId: result.id,
+                        isAdmin: result.isAdmin,
+                        isGiver: result.isGiver
+                    },
+                        process.env.SECRET_KEY,
+                        {expiresIn: 3600}
+                );
+
+                res.status(200).json({auth: true, token: token})
+            }
+        )
+}
+
+export default { listAllUsers, findUser, createNewUser, updateUser, deleteUser, login }
