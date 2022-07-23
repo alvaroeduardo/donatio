@@ -1,25 +1,15 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-
-const Routes = require('./src/routes');
-const connection = require('./src/db.config');
+import express from "express";
+import cors from "cors";
+import routes from "./src/Routes.js";
+import db from "./src/Config/db.js";
 
 const app = express();
 
 app.use(express.json());
-app.use(Routes);
 app.use(cors());
+app.use(routes);
 
-const port = process.env.PORT || '3333';
+const port = process.env.PORT || 3000;
 
-app.listen(port, ()=>{
-    console.log(`Servidor iniciado com sucesso. Rodando na porta ${port}.` );
-    
-    connection.connect(function(err){
-        if (err) return err;
-
-        console.log('Banco de dados conectado com sucesso.');
-    })
-})
+db.sync(()=>{console.log(`Banco de dados conectado com sucesso.`)});
+app.listen(port, ()=>{console.log(`Servidor iniciado com sucesso na porta: ${port}`)});
