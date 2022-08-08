@@ -1,7 +1,7 @@
 .menuButtonContainer{
     width: 90%;
     height: auto;
-    padding: 1rem .5rem;
+    padding: .7rem .5rem;
     background-color: #F5F6FA;
     border-radius: 10px;
     display: flex;
@@ -9,7 +9,7 @@
     justify-content: center;
     cursor: pointer;
     transition: .2s;
-    margin: 0 0 1rem 0;
+    margin: 0 0 .5rem 0;
 }
 
 .menuButtonContainer > h1{
