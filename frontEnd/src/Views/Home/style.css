@@ -1,3 +1,5 @@
 .homeComponentContainer{
     background-color: #F5F6FA;
+    display: flex;
+    flex-direction: row;
 }

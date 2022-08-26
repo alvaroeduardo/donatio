@@ -1,0 +1,8 @@
+.containerMain{
+    width: 80%;
+    height: 98.5vh;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 1rem;
+}
