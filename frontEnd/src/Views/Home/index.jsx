@@ -10,7 +10,7 @@ function Home() {
             <Menu/>
             
             <Main>
-                <h1>ola mundo</h1>
+                <h1>Início</h1>
             </Main> 
         </div>
     
